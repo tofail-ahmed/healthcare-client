@@ -21,15 +21,8 @@ const HomePage = () => {
         },
       }}
     >
-      <ButtonGroup size="small" aria-label="Small button group">
-        {buttons}
-      </ButtonGroup>
-      <ButtonGroup color="secondary" aria-label="Medium-sized button group">
-        {buttons}
-      </ButtonGroup>
-      <ButtonGroup size="large" aria-label="Large button group">
-        {buttons}
-      </ButtonGroup>
+     
+      <Button >Text</Button>
     </Box>
     </div>
   );
