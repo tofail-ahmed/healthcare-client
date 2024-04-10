@@ -66,7 +66,7 @@ const Specialist = async () => {
                 <div>No icon available</div>
               )}
               <Box>
-                <Typography component="p" fontWeight={600} fontSize={18} mt={2}>
+                <Typography component="p" fontWeight={600} fontSize={18} mt={2} color="white">
                   {speciality.title}
                 </Typography>
               </Box>
