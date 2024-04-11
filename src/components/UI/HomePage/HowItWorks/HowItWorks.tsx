@@ -39,13 +39,13 @@ const HowItWorks = () => {
               <Box
                 sx={{
                   width: "100%",
-                  border: "2px solid gray",
+                  border: "2px solid  #3b82f6 ",
                   padding: "10px",
                   borderRadius: "10px",
                 }}
               >
                 <Image width={30} src={searchDctr} alt="logo" />
-                <Typography fontWeight={600} fontSize={20} sx={{ margin: "10px 0px", }}>
+                <Typography fontWeight={600} fontSize={20} color="primary.main" sx={{ margin: "10px 0px", }}>
                   Search Doctor
                 </Typography>
                 <Typography color="GrayText">
@@ -56,13 +56,13 @@ const HowItWorks = () => {
               <Box
                 sx={{
                   width: "100%",
-                  border: "2px solid gray",
+                  border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
                 }}
               >
                 <Image width={30} src={checkDctr} alt="logo" />
-                <Typography fontWeight={600} fontSize={20} sx={{ margin: "10px 0px", }}>
+                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
                  Check Doctor Profile
                 </Typography>
                 <Typography color="GrayText">
@@ -73,13 +73,13 @@ const HowItWorks = () => {
               <Box
                 sx={{
                   width: "100%",
-                  border: "2px solid gray",
+                  border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
                 }}
               >
                 <Image width={30} src={schedule} alt="logo" />
-                <Typography fontWeight={600} fontSize={20} sx={{ margin: "10px 0px", }}>
+                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
                   Schedule Appointment
                 </Typography>
                 <Typography color="GrayText">
@@ -90,13 +90,13 @@ const HowItWorks = () => {
               <Box
                 sx={{
                   width: "100%",
-                  border: "2px solid gray",
+                  border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
                 }}
               >
                 <Image width={30} src={solution} alt="logo" />
-                <Typography fontWeight={600} fontSize={20} sx={{ margin: "10px 0px", }}>
+                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
                   Get Your Solution
                 </Typography>
                 <Typography color="GrayText">
