@@ -12,6 +12,7 @@ import logo from "../../../public/assets/svgs/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { modifyPayload } from "@/utils/modifyPayload";
 
 
 interface IPatient{
@@ -32,7 +33,10 @@ const RegisterPage = () => {
     watch,
     formState: { errors },
   } = useForm<IPatientRegister>();
-  const onSubmit: SubmitHandler<IPatientRegister> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IPatientRegister> = (values) =>{
+    const data=modifyPayload(values)
+    console.log(data);
+  } 
 
   return (
     <Container sx={{}}>
