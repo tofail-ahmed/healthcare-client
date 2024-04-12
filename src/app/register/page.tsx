@@ -15,11 +15,12 @@ const RegisterPage = () => {
   return (
     <Container
       sx={{
-        padding: "50px",
+
       }}
     >
       <Stack
         sx={{
+          height:"100vh",
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -106,7 +107,7 @@ const RegisterPage = () => {
             <Button fullWidth={true} sx={{ margin: "10px 0px" }}>
               Register
             </Button>
-            <Typography   component="p" fontWeight={300}>
+            <Typography   component="p" fontWeight={300} color="GrayText"> 
               Do You Already Have an Account?{" "}
               <Link className="text-blue-600 font-semibold" href="/login">
                 Login
