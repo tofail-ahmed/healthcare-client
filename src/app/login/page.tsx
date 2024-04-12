@@ -9,6 +9,13 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { MdOutlineLogin } from "react-icons/md";
+import { useForm, SubmitHandler } from "react-hook-form"
+
+type Inputs = {
+  example: string
+  exampleRequired: string
+}
+
 
 const LoginPage = () => {
   return (
