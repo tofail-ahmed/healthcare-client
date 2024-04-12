@@ -8,35 +8,46 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import { toast } from 'sonner';
 import logo from "../../../public/assets/svgs/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
-
-
-interface IPatient{
+import { registerPatient } from "@/services/actions/registerPatient";
+interface IPatient {
   name: string;
   email: string;
   contactNumber: number;
   address: string;
 }
-interface IPatientRegister{
-  password:string;
-  patient:IPatient
+interface IPatientRegister {
+  password: string;
+  patient: IPatient;
 }
 
 const RegisterPage = () => {
+  const router=useRouter()
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm<IPatientRegister>();
-  const onSubmit: SubmitHandler<IPatientRegister> = (values) =>{
-    const data=modifyPayload(values)
-    console.log(data);
-  } 
+  const onSubmit: SubmitHandler<IPatientRegister> = async (values) => {
+    const data = modifyPayload(values);
+    // console.log(data);
+    try {
+      const res = await registerPatient(data);
+      if(res?.data?.id){
+        toast.success(res?.message);
+        router.push("/login")
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <Container sx={{}}>
