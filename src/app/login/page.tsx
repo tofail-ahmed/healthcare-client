@@ -14,6 +14,7 @@ import { MdOutlineLogin } from "react-icons/md";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { loginUser } from "@/services/actions/loginUser";
 import { useRouter } from "next/navigation";
+import { storeUserInfo } from "@/services/actions/auth.services";
 export type LoginData = {
   email: string;
   password: string;
@@ -33,6 +34,7 @@ const LoginPage = () => {
       const res = await loginUser(values);
       console.log(res);
       if (res?.data?.accessToken) {
+        storeUserInfo(res?.data?.accessToken)
         toast.success(res?.message);
         router.push("/");
       }
