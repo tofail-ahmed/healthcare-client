@@ -1,53 +1,14 @@
 "use client"
-import { Container, Stack, Typography, Box, Button } from "@mui/material";
+import { Container, Stack, Typography, Box } from "@mui/material";
 import Link from "next/link";
-import React from "react";
-import {
-  getUSerInfo,
-  isLoggedIn,
-  removeUser,
-} from "@/services/actions/auth.services";
-import { useRouter } from "next/navigation";
-import { toast } from "sonner";
+import dynamic from "next/dynamic";
 
 const Navbar = () => {
-  const router = useRouter();
-  const authInfo = getUSerInfo();
+  const AuthButton = dynamic(
+    () => import("@/components/UI/AuthButton/AuthButton"),
+    { ssr: false }
+  );
 
-  const handleLogout = () => {
-    toast.dismiss();
-    toast(
-      <div>
-        <p>Are you sure to Logout?</p>
-        {/* <p>Logout will navigate you to Login page!!</p> */}
-        <Box
-          sx={{
-            marginTop: "5px",
-          }}
-        >
-          <Box >
-            <Button  size="small" onClick={() => handleLogoutConfirm(true)}>
-              Yes
-            </Button>
-            <Button size="small" onClick={() => handleLogoutConfirm(false)}>
-              No
-            </Button>
-          </Box>
-        </Box>
-      </div>
-    );
-  };
-
-  const handleLogoutConfirm = (confirmed: boolean) => {
-    if (confirmed) {
-      removeUser();
-      toast.success("Logout successful!");
-      router.refresh();
-      toast.dismiss();
-    } else {
-      toast.dismiss();
-    }
-  };
   return (
     <Container>
       <Stack
@@ -79,15 +40,8 @@ const Navbar = () => {
             NGO&apos;s
           </Typography>
         </Stack>
-        {authInfo?.userId ? (
-          <Button onClick={handleLogout} color="error">
-            Logout
-          </Button>
-        ) : (
-          <Button component={Link} href="/login">
-            Login
-          </Button>
-        )}
+
+        <AuthButton />
       </Stack>
     </Container>
   );
