@@ -29,12 +29,12 @@ const LoginPage = () => {
     formState: { errors },
   } = useForm<LoginData>();
   const onSubmit: SubmitHandler<LoginData> = async (values) => {
-    console.log(values);
+    // console.log(values);
     try {
       const res = await loginUser(values);
-      console.log(res);
+      // console.log(res);
       if (res?.data?.accessToken) {
-        storeUserInfo(res?.data?.accessToken)
+        storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message);
         router.push("/");
       }

@@ -19,8 +19,21 @@ const Navbar = () => {
     toast(
       <div>
         <p>Are you sure to Logout?</p>
-        <Button onClick={() => handleLogoutConfirm(true)}>Yes</Button>
-        <Button onClick={() => handleLogoutConfirm(false)}>No</Button>
+        {/* <p>Logout will navigate you to Login page!!</p> */}
+        <Box
+          sx={{
+            marginTop: "5px",
+          }}
+        >
+          <Box >
+            <Button  size="small" onClick={() => handleLogoutConfirm(true)}>
+              Yes
+            </Button>
+            <Button size="small" onClick={() => handleLogoutConfirm(false)}>
+              No
+            </Button>
+          </Box>
+        </Box>
       </div>
     );
   };
@@ -29,7 +42,7 @@ const Navbar = () => {
     if (confirmed) {
       removeUser();
       toast.success("Logout successful!");
-      router.push("/login");
+      router.refresh();
       toast.dismiss();
     } else {
       toast.dismiss();

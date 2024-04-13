@@ -16,6 +16,9 @@ import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
 import { registerPatient } from "@/services/actions/registerPatient";
+import { storeUserInfo } from "@/services/actions/auth.services";
+import { loginUser } from "@/services/actions/loginUser";
+
 interface IPatient {
   name: string;
   email: string;
@@ -28,7 +31,7 @@ interface IPatientRegister {
 }
 
 const RegisterPage = () => {
-  const router=useRouter()
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -40,9 +43,20 @@ const RegisterPage = () => {
     // console.log(data);
     try {
       const res = await registerPatient(data);
-      if(res?.data?.id){
+      if (res?.data?.id) {
         toast.success(res?.message);
-        router.push("/login")
+        // router.push("/login")
+
+        const result = await loginUser({
+          password: values.password,
+          email: values.patient.email,
+        });
+        // console.log(res);
+        if (result?.data?.accessToken) {
+          storeUserInfo(result?.data?.accessToken);
+          // toast.success(result?.message);
+          router.push("/");
+        }
       }
     } catch (err: any) {
       console.error(err.message);
