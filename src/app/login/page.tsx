@@ -1,3 +1,4 @@
+"use client";
 import {
   Container,
   Stack,
@@ -7,17 +8,38 @@ import {
   TextField,
   Button,
 } from "@mui/material";
+import { toast } from "sonner";
 import Link from "next/link";
 import { MdOutlineLogin } from "react-icons/md";
-import { useForm, SubmitHandler } from "react-hook-form"
-
-type Inputs = {
-  example: string
-  exampleRequired: string
-}
-
+import { useForm, SubmitHandler } from "react-hook-form";
+import { loginUser } from "@/services/actions/loginUser";
+import { useRouter } from "next/navigation";
+export type LoginData = {
+  email: string;
+  password: string;
+};
 
 const LoginPage = () => {
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<LoginData>();
+  const onSubmit: SubmitHandler<LoginData> = async (values) => {
+    console.log(values);
+    try {
+      const res = await loginUser(values);
+      console.log(res);
+      if (res?.data?.accessToken) {
+        toast.success(res?.message);
+        router.push("/");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
+  };
   return (
     <Container>
       <Stack
@@ -59,7 +81,7 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
                   <TextField
@@ -68,6 +90,7 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     fullWidth={true}
+                    {...register("email")}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -77,6 +100,7 @@ const LoginPage = () => {
                     variant="outlined"
                     size="small"
                     fullWidth={true}
+                    {...register("password")}
                   />
                 </Grid>
               </Grid>
@@ -85,7 +109,11 @@ const LoginPage = () => {
                   Forgot Password?
                 </Link>
               </Typography>
-              <Button fullWidth={true} sx={{ margin: "20px 0px" }}>
+              <Button
+                fullWidth={true}
+                sx={{ margin: "20px 0px" }}
+                type="submit"
+              >
                 Login
               </Button>
               <Typography component="p" fontWeight={300} color="GrayText">
