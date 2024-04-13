@@ -4,3 +4,10 @@ export const setLocalStorage=(key: string,token:string)=>{
       }
       return localStorage.setItem(key,token)
 }
+
+export const getLocalStorage=(key:string)=>{
+      if(!key || typeof window == "undefined"){
+            return " "
+      }
+      return localStorage.getItem(key);
+}
