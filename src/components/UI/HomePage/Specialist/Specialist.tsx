@@ -33,7 +33,12 @@ const Specialist = async () => {
             Explore Treatments Across Specialits
           </Typography>
         </Box>
-        <Stack direction="row" gap={4} mt={5}>
+        <Stack
+          direction="row"
+          gap={4}
+          mt={5}
+          // className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[10px]"
+        >
           {specialties.map((speciality: any) => (
             <Box
               key={speciality.id}
@@ -50,9 +55,9 @@ const Specialist = async () => {
                   height: "50px",
                   margin: "0 auto",
                 },
-                "&:hover":{
-                  border: "1px solid black", 
-                }
+                "&:hover": {
+                  border: "1px solid black",
+                },
               }}
             >
               {speciality.icon ? (
@@ -66,16 +71,27 @@ const Specialist = async () => {
                 <div>No icon available</div>
               )}
               <Box>
-                <Typography component="p" fontWeight={600} fontSize={18} mt={2} color="white">
+                <Typography
+                  component="p"
+                  fontWeight={600}
+                  fontSize={18}
+                  mt={2}
+                  color="white"
+                >
                   {speciality.title}
                 </Typography>
               </Box>
             </Box>
           ))}
         </Stack>
-        <Button variant="outlined" sx={{
-            marginTop:"30px"
-        }}>View All</Button>
+        <Button
+          variant="outlined"
+          sx={{
+            marginTop: "30px",
+          }}
+        >
+          View All
+        </Button>
       </Box>
     </Container>
   );

@@ -88,6 +88,10 @@ const LoginPage = () => {
             <Form
               onSubmit={handleLogin}
               resolver={zodResolver(validationSchema)}
+              defaultValues={{
+                email:"",
+                password:""
+              }}
             >
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
@@ -97,7 +101,6 @@ const LoginPage = () => {
                     type="email"
                     size="small"
                     fullWidth={true}
-                    required={true}
                   />
                 </Grid>
                 <Grid item md={6}>
@@ -107,7 +110,6 @@ const LoginPage = () => {
                     type="password"
                     size="small"
                     fullWidth={true}
-                    required={true}
                   />
                 </Grid>
               </Grid>
