@@ -11,24 +11,20 @@ import {
 import { toast } from "sonner";
 import Link from "next/link";
 import { MdOutlineLogin } from "react-icons/md";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { loginUser } from "@/services/actions/loginUser";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/actions/auth.services";
-export type LoginData = {
-  email: string;
-  password: string;
-};
+import Form from "@/components/Forms/Form";
+// export type LoginData = {
+//   email: string;
+//   password: string;
+// };
 
 const LoginPage = () => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<LoginData>();
-  const onSubmit: SubmitHandler<LoginData> = async (values) => {
+ 
+  const handleLogin = async (values:FieldValues) => {
     // console.log(values);
     try {
       const res = await loginUser(values);
@@ -83,7 +79,7 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={handleLogin}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
                   <TextField
@@ -124,7 +120,7 @@ const LoginPage = () => {
                   Register
                 </Link>
               </Typography>
-            </form>
+            </Form>
           </Box>
         </Box>
       </Stack>
