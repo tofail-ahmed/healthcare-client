@@ -13,32 +13,20 @@ import logo from "../../../public/assets/svgs/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from 'next/navigation'
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
 import { registerPatient } from "@/services/actions/registerPatient";
 import { storeUserInfo } from "@/services/actions/auth.services";
 import { loginUser } from "@/services/actions/loginUser";
+import Form from "@/components/Forms/Form";
+import InputField from "@/components/Forms/InputField";
 
-interface IPatient {
-  name: string;
-  email: string;
-  contactNumber: number;
-  address: string;
-}
-interface IPatientRegister {
-  password: string;
-  patient: IPatient;
-}
+
 
 const RegisterPage = () => {
   const router = useRouter();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm<IPatientRegister>();
-  const onSubmit: SubmitHandler<IPatientRegister> = async (values) => {
+  
+  const handleRegister = async (values:FieldValues) => {
     const data = modifyPayload(values);
     // console.log(data);
     try {
@@ -104,55 +92,55 @@ const RegisterPage = () => {
             </Box>
           </Stack>
           <Box>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <Form onSubmit={handleRegister}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={12}>
-                  <TextField
+                  <InputField
                     label="Name"
-                    variant="outlined"
+                  required={true}
                     size="small"
                     fullWidth={true}
-                    {...register("patient.name")}
+                  name="patient.name"
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField
                     label="Email"
                     type="email"
-                    variant="outlined"
+                    required={true}
                     size="small"
                     fullWidth={true}
-                    {...register("patient.email")}
+                 name="patient.email"
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField
                     label="Password"
                     type="password"
-                    variant="outlined"
+                    required={true}
                     size="small"
                     fullWidth={true}
-                    {...register("password")}
+                    name="password"
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField
                     label="Contact No."
                     type="tel"
-                    variant="outlined"
+                    required={true}
                     size="small"
                     fullWidth={true}
-                    {...register("patient.contactNumber")}
+                    name="patient.contactNumber"
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField
                     label="Address"
                     type="text"
-                    variant="outlined"
+                    required={true}
                     size="small"
                     fullWidth={true}
-                    {...register("patient.address")}
+                    name="patient.address"
                   />
                 </Grid>
               </Grid>
@@ -169,7 +157,7 @@ const RegisterPage = () => {
                   Login
                 </Link>
               </Typography>
-            </form>
+            </Form>
           </Box>
         </Box>
       </Stack>
