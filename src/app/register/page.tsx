@@ -8,11 +8,13 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import { toast } from 'sonner';
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 import logo from "../../../public/assets/svgs/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
 import { registerPatient } from "@/services/actions/registerPatient";
@@ -21,12 +23,29 @@ import { loginUser } from "@/services/actions/loginUser";
 import Form from "@/components/Forms/Form";
 import InputField from "@/components/Forms/InputField";
 
-
-
+export const patientValidationSchema = z.object({
+  name: z.string().min(1, "Enter your name!"),
+  email: z.string().email("Enter your email address!"),
+  contactNumber: z.string().regex(/^\d{11}$/, "Enter your phone number!"),
+  address: z.string().min(1, "Enter your address!"),
+});
+export const validationSchema = z.object({
+  password: z.string().min(6, "Password must be 6 character long!"),
+  patient: patientValidationSchema,
+});
+const defaultValues={
+  password:"",
+  patient:{
+    name:"",
+    email:"",
+    contactNumber:"",
+    address:""
+  }
+}
 const RegisterPage = () => {
   const router = useRouter();
-  
-  const handleRegister = async (values:FieldValues) => {
+
+  const handleRegister = async (values: FieldValues) => {
     const data = modifyPayload(values);
     // console.log(data);
     try {
@@ -92,32 +111,33 @@ const RegisterPage = () => {
             </Box>
           </Stack>
           <Box>
-            <Form onSubmit={handleRegister}>
+            <Form
+              onSubmit={handleRegister}
+              resolver={zodResolver(validationSchema)}
+              defaultValues={defaultValues}
+            >
               <Grid container spacing={2} my={1}>
                 <Grid item md={12}>
                   <InputField
                     label="Name"
-                  required={true}
                     size="small"
                     fullWidth={true}
-                  name="patient.name"
+                    name="patient.name"
                   />
                 </Grid>
                 <Grid item md={6}>
                   <InputField
                     label="Email"
                     type="email"
-                    required={true}
                     size="small"
                     fullWidth={true}
-                 name="patient.email"
+                    name="patient.email"
                   />
                 </Grid>
                 <Grid item md={6}>
                   <InputField
                     label="Password"
                     type="password"
-                    required={true}
                     size="small"
                     fullWidth={true}
                     name="password"
@@ -127,7 +147,6 @@ const RegisterPage = () => {
                   <InputField
                     label="Contact No."
                     type="tel"
-                    required={true}
                     size="small"
                     fullWidth={true}
                     name="patient.contactNumber"
@@ -137,7 +156,6 @@ const RegisterPage = () => {
                   <InputField
                     label="Address"
                     type="text"
-                    required={true}
                     size="small"
                     fullWidth={true}
                     name="patient.address"
