@@ -7,7 +7,7 @@ type TInputProps = {
   size?: "small" | "medium";
   fullWidth?: boolean;
   sx?:SxProps,
-  placeholder:string;
+  placeholder?:string;
   required:boolean
 
 

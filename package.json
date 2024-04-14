@@ -12,6 +12,7 @@
     "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "@hookform/resolvers": "^3.3.4",
     "@mui/material": "^5.15.15",
     "@mui/material-nextjs": "^5.15.11",
     "jwt-decode": "^4.0.0",
@@ -20,7 +21,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "react-icons": "^5.0.1",
-    "sonner": "^1.4.41"
+    "sonner": "^1.4.41",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "^20",

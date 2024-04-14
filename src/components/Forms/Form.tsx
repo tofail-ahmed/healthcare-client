@@ -5,18 +5,27 @@ import {
   SubmitHandler,
   FieldValues,
 } from "react-hook-form";
+type TFormConfig = {
+  resolver?: any;
+};
+
 type TFormProps = {
   children: ReactNode;
   onSubmit: SubmitHandler<FieldValues>;
-};
-const Form = ({ children, onSubmit }: TFormProps) => {
-  const methods = useForm();
-  const { handleSubmit,reset } = methods;
-  const submit: SubmitHandler<FieldValues> = (data) => {
-      onSubmit(data)
-      // console.log(data);
-      reset()
+} & TFormConfig;
+
+const Form = ({ children, onSubmit, resolver }: TFormProps) => {
+  const formConfig: TFormConfig = {};
+  if (resolver) {
+    formConfig["resolver"] = resolver;
   }
+  const methods = useForm(resolver);
+  const { handleSubmit, reset } = methods;
+  const submit: SubmitHandler<FieldValues> = (data) => {
+    onSubmit(data);
+    // console.log(data);
+    reset();
+  };
 
   return (
     <FormProvider {...methods}>

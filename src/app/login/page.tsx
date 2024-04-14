@@ -17,11 +17,16 @@ import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/actions/auth.services";
 import Form from "@/components/Forms/Form";
 import InputField from "@/components/Forms/InputField";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 // export type LoginData = {
 //   email: string;
 //   password: string;
 // };
-
+export const validationSchema = z.object({
+  email: z.string().email("Enter your email!"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
 const LoginPage = () => {
   const router = useRouter();
 
@@ -80,7 +85,10 @@ const LoginPage = () => {
             </Box>
           </Stack>
           <Box>
-            <Form onSubmit={handleLogin}>
+            <Form
+              onSubmit={handleLogin}
+              resolver={zodResolver(validationSchema)}
+            >
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
                   <InputField
@@ -93,14 +101,13 @@ const LoginPage = () => {
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <InputField 
+                  <InputField
                     name="password"
                     label="Password"
                     type="password"
                     size="small"
                     fullWidth={true}
                     required={true}
-
                   />
                 </Grid>
               </Grid>
