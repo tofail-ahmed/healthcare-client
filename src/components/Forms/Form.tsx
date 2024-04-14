@@ -11,10 +11,11 @@ type TFormProps = {
 };
 const Form = ({ children, onSubmit }: TFormProps) => {
   const methods = useForm();
-  const { handleSubmit } = methods;
+  const { handleSubmit,reset } = methods;
   const submit: SubmitHandler<FieldValues> = (data) => {
       onSubmit(data)
-      console.log(data);
+      // console.log(data);
+      reset()
   }
 
   return (

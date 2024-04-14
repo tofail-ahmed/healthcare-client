@@ -16,6 +16,7 @@ import { loginUser } from "@/services/actions/loginUser";
 import { useRouter } from "next/navigation";
 import { storeUserInfo } from "@/services/actions/auth.services";
 import Form from "@/components/Forms/Form";
+import InputField from "@/components/Forms/InputField";
 // export type LoginData = {
 //   email: string;
 //   password: string;
@@ -23,8 +24,8 @@ import Form from "@/components/Forms/Form";
 
 const LoginPage = () => {
   const router = useRouter();
- 
-  const handleLogin = async (values:FieldValues) => {
+
+  const handleLogin = async (values: FieldValues) => {
     // console.log(values);
     try {
       const res = await loginUser(values);
@@ -82,23 +83,21 @@ const LoginPage = () => {
             <Form onSubmit={handleLogin}>
               <Grid container spacing={2} my={1}>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField
+                    name="email"
                     label="Email"
                     type="email"
-                    variant="outlined"
                     size="small"
                     fullWidth={true}
-                    {...register("email")}
                   />
                 </Grid>
                 <Grid item md={6}>
-                  <TextField
+                  <InputField 
+                    name="password"
                     label="Password"
                     type="password"
-                    variant="outlined"
                     size="small"
                     fullWidth={true}
-                    {...register("password")}
                   />
                 </Grid>
               </Grid>
