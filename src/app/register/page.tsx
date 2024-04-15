@@ -52,7 +52,7 @@ const RegisterPage = () => {
     // console.log(data);
     try {
       const res = await registerPatient(data);
-      console.log(res);
+      // console.log(res);
       if (res?.data?.id) {
         toast.success(res?.message);
         // router.push("/login")
@@ -61,7 +61,7 @@ const RegisterPage = () => {
           password: values.password,
           email: values.patient.email,
         });
-        console.log(result);
+        // console.log(result);
         if (result?.data?.accessToken) {
           storeUserInfo(result?.data?.accessToken);
           // toast.success(result?.message);
