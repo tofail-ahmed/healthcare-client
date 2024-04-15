@@ -1,3 +1,4 @@
+
 import {
   Box,
   Typography,
@@ -11,11 +12,14 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import { FaLocationDot } from "react-icons/fa6";
+import React, { useState, useEffect } from 'react';
 
-const TopRatedDoctors = async () => {
+const TopRatedDoctors =  async() => {
   const res = await fetch("http://localhost:5000/api/v1/doctor?page=1&limit=3");
   const { data: doctors } = await res.json();
   //   console.log(doctors);
+;
+  
   return (
     <Box
       sx={{
@@ -48,18 +52,28 @@ const TopRatedDoctors = async () => {
           {doctors.map((doctor: any) => (
             <Grid key={doctor.id} md={4}>
               <Card
-                className="w-[350px] h-auto"
+                
                 sx={{
                   margin: "10px 10px",
+                 
                 }}
               >
-                <Box>
+                <Box sx={{
+                width: '350px',
+                height: '300px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                overflow: 'hidden',
+                }}>
                   <Image
-                    className="w-[350px] h-[300px]"
-                    src={doctor.profilePhoto}
-                    alt="photo"
-                    width={300}
-                    height={100}
+                   
+                   src={doctor.profilePhoto}
+                   alt="photo"
+                   width={350}
+                   height={300} 
+                 
+                   
                   />
                 </Box>
                 <CardContent>
@@ -72,10 +86,14 @@ const TopRatedDoctors = async () => {
                   <Typography variant="body2" color="text.secondary" my={1}>
                     Email: {doctor.email}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    <span className="flex items-center ">
+                  <Typography sx={{
+                       display: 'flex',
+                       
+                       alignItems: 'center',
+                    }} variant="body2" color="text.secondary">
+                    
                       <FaLocationDot /> {doctor.address}
-                    </span>
+                    
                   </Typography>
                 </CardContent>
                 <CardActions

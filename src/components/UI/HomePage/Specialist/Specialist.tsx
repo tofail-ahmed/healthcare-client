@@ -37,7 +37,7 @@ const Specialist = async () => {
           direction="row"
           gap={4}
           mt={5}
-          // className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[10px]"
+         
         >
           {specialties.map((speciality: any) => (
             <Box

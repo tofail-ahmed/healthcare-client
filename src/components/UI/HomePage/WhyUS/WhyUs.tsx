@@ -40,7 +40,7 @@ const WhyUs = () => {
                     padding: "10px",
                     borderRadius: "10px",
                   }}
-                  className=" text-blue-500"
+                  color="primary.main"
                   fontSize={30}
                 >
                   <FaAward />
@@ -79,7 +79,7 @@ const WhyUs = () => {
                     padding: "10px",
                     borderRadius: "10px",
                   }}
-                  className=" text-blue-500"
+                  color="primary.main"
                   fontSize={30}
                 >
                   <FaHandHoldingHeart />
@@ -118,7 +118,7 @@ const WhyUs = () => {
                     padding: "10px",
                     borderRadius: "10px",
                   }}
-                  className=" text-blue-500"
+                  color="primary.main"
                   fontSize={30}
                 >
                  <FaBookMedical />
@@ -157,7 +157,7 @@ const WhyUs = () => {
                     padding: "10px",
                     borderRadius: "10px",
                   }}
-                  className=" text-blue-500"
+                  color="primary.main"
                   fontSize={30}
                 >
                   <MdWifiCalling3 />

@@ -29,23 +29,47 @@ const HowItWorks = () => {
           top quality facilities right here.
         </Typography>
       </Box>
-      <Box className="grid grid-cols-2 my-[50px] items-center">
-        <Box className="flex justify-center items-center">
-          <Image height={400}  src={howItWorks} alt="how it works" />
+      <Box
+      
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        marginTop: '50px',
+        alignItems: 'center',
+      }}
+
+       >
+        <Box sx={{
+          display:"flex",
+          justifyContent:"center",
+          alignItems:"center"
+        }}>
+          <Image height={400} src={howItWorks} alt="how it works" />
         </Box>
         <Box>
           <Box>
-            <Box className="grid grid-cols-2 gap-[20px] ">
+            <Box sx={{
+              display:"flex",
+              gap:"20px",
+             margin:"10px 10px",
+              width:"100%"
+            }}>
               <Box
                 sx={{
                   width: "100%",
                   border: "2px solid  #3b82f6 ",
                   padding: "10px",
                   borderRadius: "10px",
+                  
                 }}
               >
                 <Image width={30} src={searchDctr} alt="logo" />
-                <Typography fontWeight={600} fontSize={20} color="primary.main" sx={{ margin: "10px 0px", }}>
+                <Typography
+                  fontWeight={600}
+                  fontSize={20}
+                  color="primary.main"
+                  sx={{ margin: "10px 0px" }}
+                >
                   Search Doctor
                 </Typography>
                 <Typography color="GrayText">
@@ -62,14 +86,26 @@ const HowItWorks = () => {
                 }}
               >
                 <Image width={30} src={checkDctr} alt="logo" />
-                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
-                 Check Doctor Profile
+                <Typography
+                  fontWeight={600}
+                  fontSize={20}
+                  color="primary.main"
+                  sx={{ margin: "10px 0px" }}
+                >
+                  Check Doctor Profile
                 </Typography>
                 <Typography color="GrayText">
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Dolor, sunt!
                 </Typography>
               </Box>
+            </Box>
+            <Box  sx={{
+              display:"flex",
+              gap:"20px",
+              margin:"10px 10px",
+              width:"100%"
+            }}>
               <Box
                 sx={{
                   width: "100%",
@@ -79,7 +115,12 @@ const HowItWorks = () => {
                 }}
               >
                 <Image width={30} src={schedule} alt="logo" />
-                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
+                <Typography
+                  fontWeight={600}
+                  fontSize={20}
+                  color="primary.main"
+                  sx={{ margin: "10px 0px" }}
+                >
                   Schedule Appointment
                 </Typography>
                 <Typography color="GrayText">
@@ -96,7 +137,12 @@ const HowItWorks = () => {
                 }}
               >
                 <Image width={30} src={solution} alt="logo" />
-                <Typography fontWeight={600} fontSize={20}  color="primary.main" sx={{ margin: "10px 0px", }}>
+                <Typography
+                  fontWeight={600}
+                  fontSize={20}
+                  color="primary.main"
+                  sx={{ margin: "10px 0px" }}
+                >
                   Get Your Solution
                 </Typography>
                 <Typography color="GrayText">
@@ -104,29 +150,52 @@ const HowItWorks = () => {
                   Dolor, sunt!
                 </Typography>
               </Box>
-              
-             
             </Box>
           </Box>
         </Box>
       </Box>
-      <Box sx={{ background: "linear-gradient(150deg, #007BFF, #5eead4)",borderRadius:"10px",display:"flex",justifyContent:"space-around",alignItems:"center",padding:"20px"}}>
-            <Box>
-                  <Typography color="white" fontSize={30} fontWeight={600} >180+</Typography>
-                  <Typography color="white" fontSize={10} fontWeight={300} >Expert Doctors</Typography>
-            </Box>
-            <Box>
-                  <Typography color="white" fontSize={30} fontWeight={600} >26+</Typography>
-                  <Typography color="white" fontSize={10} fontWeight={300} >Expert Services</Typography>
-            </Box>
-            <Box>
-                  <Typography color="white" fontSize={30} fontWeight={600} >10K+</Typography>
-                  <Typography color="white" fontSize={10} fontWeight={300} >Happy Patients</Typography>
-            </Box>
-            <Box>
-                  <Typography color="white" fontSize={30} fontWeight={600} >150+</Typography>
-                  <Typography color="white" fontSize={10} fontWeight={300} >Best Award Winners</Typography>
-            </Box>
+      <Box
+        sx={{
+          background: "linear-gradient(150deg, #007BFF, #5eead4)",
+          borderRadius: "10px",
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+          padding: "20px",
+        }}
+      >
+        <Box>
+          <Typography color="white" fontSize={30} fontWeight={600}>
+            180+
+          </Typography>
+          <Typography color="white" fontSize={10} fontWeight={300}>
+            Expert Doctors
+          </Typography>
+        </Box>
+        <Box>
+          <Typography color="white" fontSize={30} fontWeight={600}>
+            26+
+          </Typography>
+          <Typography color="white" fontSize={10} fontWeight={300}>
+            Expert Services
+          </Typography>
+        </Box>
+        <Box>
+          <Typography color="white" fontSize={30} fontWeight={600}>
+            10K+
+          </Typography>
+          <Typography color="white" fontSize={10} fontWeight={300}>
+            Happy Patients
+          </Typography>
+        </Box>
+        <Box>
+          <Typography color="white" fontSize={30} fontWeight={600}>
+            150+
+          </Typography>
+          <Typography color="white" fontSize={10} fontWeight={300}>
+            Best Award Winners
+          </Typography>
+        </Box>
       </Box>
     </Container>
   );
