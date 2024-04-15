@@ -22,6 +22,7 @@ import { storeUserInfo } from "@/services/actions/auth.services";
 import { loginUser } from "@/services/actions/loginUser";
 import Form from "@/components/Forms/Form";
 import InputField from "@/components/Forms/InputField";
+import React, { useState } from "react";
 
 export const patientValidationSchema = z.object({
   name: z.string().min(1, "Enter your name!"),
@@ -33,23 +34,25 @@ export const validationSchema = z.object({
   password: z.string().min(6, "Password must be 6 character long!"),
   patient: patientValidationSchema,
 });
-const defaultValues={
-  password:"",
-  patient:{
-    name:"",
-    email:"",
-    contactNumber:"",
-    address:""
-  }
-}
+const defaultValues = {
+  password: "",
+  patient: {
+    name: "",
+    email: "",
+    contactNumber: "",
+    address: "",
+  },
+};
 const RegisterPage = () => {
   const router = useRouter();
+  const [error, setError] = useState("");
 
   const handleRegister = async (values: FieldValues) => {
     const data = modifyPayload(values);
     // console.log(data);
     try {
       const res = await registerPatient(data);
+      console.log(res);
       if (res?.data?.id) {
         toast.success(res?.message);
         // router.push("/login")
@@ -58,12 +61,19 @@ const RegisterPage = () => {
           password: values.password,
           email: values.patient.email,
         });
-        // console.log(res);
+        console.log(result);
         if (result?.data?.accessToken) {
           storeUserInfo(result?.data?.accessToken);
           // toast.success(result?.message);
           router.push("/");
         }
+      } else {
+        // setError();
+        setError(
+          res.message
+            ? res.message
+            : "User Already exists or something went wrong! try again!"
+        );
       }
     } catch (err: any) {
       console.error(err.message);
@@ -175,6 +185,11 @@ const RegisterPage = () => {
                   Login
                 </Link>
               </Typography>
+              {error && (
+                <Typography component="p" fontWeight={300} color="red">
+                  {error}
+                </Typography>
+              )}
             </Form>
           </Box>
         </Box>

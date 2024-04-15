@@ -19,6 +19,8 @@ import Form from "@/components/Forms/Form";
 import InputField from "@/components/Forms/InputField";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from "react";
+
 // export type LoginData = {
 //   email: string;
 //   password: string;
@@ -29,6 +31,7 @@ export const validationSchema = z.object({
 });
 const LoginPage = () => {
   const router = useRouter();
+  const [error, setError] = useState("");
 
   const handleLogin = async (values: FieldValues) => {
     // console.log(values);
@@ -39,6 +42,8 @@ const LoginPage = () => {
         storeUserInfo(res?.data?.accessToken);
         toast.success(res?.message);
         router.push("/");
+      } else {
+        setError(res.message);
       }
     } catch (err: any) {
       console.error(err.message);
@@ -84,13 +89,18 @@ const LoginPage = () => {
               </Typography>
             </Box>
           </Stack>
+          {error && (
+            <Typography fontWeight={600} fontSize={20} my={2} color="red">
+              {error}
+            </Typography>
+          )}
           <Box>
             <Form
               onSubmit={handleLogin}
               resolver={zodResolver(validationSchema)}
               defaultValues={{
-                email:"",
-                password:""
+                email: "",
+                password: "",
               }}
             >
               <Grid container spacing={2} my={1}>
