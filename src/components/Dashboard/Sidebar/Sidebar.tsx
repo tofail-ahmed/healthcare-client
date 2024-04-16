@@ -11,7 +11,7 @@ import {
 import MailIcon from "@mui/icons-material/Mail";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import Link from "next/link";
-
+import { GiHospitalCross } from "react-icons/gi";
 const Sidebar = () => {
   return (
     <Box>
@@ -22,6 +22,7 @@ const Sidebar = () => {
           alignItems:"center",
           marginTop:"5px"  
         }}>
+            <GiHospitalCross />
           Health
           <Box component="span" color="primary.main">
             Care
@@ -29,19 +30,6 @@ const Sidebar = () => {
         </Typography>
         <List>
           {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
