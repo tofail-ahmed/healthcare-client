@@ -20,28 +20,39 @@ const Footer = () => {
             Diagnostrics
           </Typography>
           <Typography color="#fff" component={Link} href="/ngos">
-            NGO's
+            NGO&apos;s
           </Typography>
         </Stack>
         <Stack direction="row" gap={4} justifyContent="center" py={5}>
-          <span className="text-4xl text-blue-400">
+          <Box sx={{
+            fontSize:"36px",color:"blue"
+          }} >
             {" "}
             <FaFacebook />
-          </span>
-          <span className="text-4xl text-orange-400">
+          </Box>
+          <Box  sx={{
+            fontSize:"36px",color:"blue"
+          }}>
             {" "}
             <FaInstagram />
-          </span>
-          <span className="text-3xl text-white">
+          </Box>
+          <Box  sx={{
+            fontSize:"36px",color:"blue"
+          }}>
             {" "}
             <BsTwitterX />
-          </span>
-          <span className="text-4xl text-sky-400">
+          </Box>
+          <Box  sx={{
+            fontSize:"36px",color:"blue"
+          }}>
             {" "}
             <FaLinkedinIn />
-          </span>
+          </Box>
         </Stack>
-        <div className="border-b-[1px] border-dashed"></div>
+        <Box sx={{
+            borderBottom: '1px dashed', // border style and color
+            borderColor: 'blue', // border color
+        }}></Box>
         <Stack direction="row" gap={2} justifyContent="space-between" alignItems="center" py={3}>
           <Typography component="p" color="white">
             &copy; 2024 HealthCare. All rights Reserved.

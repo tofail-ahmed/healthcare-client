@@ -124,7 +124,7 @@ const LoginPage = () => {
                 </Grid>
               </Grid>
               <Typography textAlign="end" component="p" fontWeight={300}>
-                <Link className="text-black-600" href="/">
+                <Link style={{color:"black"}}  href="/">
                   Forgot Password?
                 </Link>
               </Typography>
@@ -137,7 +137,7 @@ const LoginPage = () => {
               </Button>
               <Typography component="p" fontWeight={300} color="GrayText">
                 Don&apos;t You Have an Account?{" "}
-                <Link className="text-blue-600 font-semibold" href="/register">
+                <Link style={{fontWeight:"bold",color:"blue"}} href="/register">
                   Register
                 </Link>
               </Typography>

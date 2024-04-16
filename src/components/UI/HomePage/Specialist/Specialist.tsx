@@ -33,20 +33,15 @@ const Specialist = async () => {
             Explore Treatments Across Specialits
           </Typography>
         </Box>
-        <Stack
-          direction="row"
-          gap={4}
-          mt={5}
-         
-        >
+        <Stack direction="row" gap={4} mt={5}>
           {specialties.map((speciality: any) => (
             <Box
               key={speciality.id}
               sx={{
                 flex: 1,
                 width: "150px",
-                backgroundColor: "primary.main",
-                border: "1px solid rgba(250,250,250,1)",
+                backgroundColor: "white",
+                border: "2px solid rgba(250,250,250,2)",
                 borderRadius: "10px",
                 textAlign: "center",
                 padding: "40px 10px",
@@ -56,7 +51,7 @@ const Specialist = async () => {
                   margin: "0 auto",
                 },
                 "&:hover": {
-                  border: "1px solid black",
+                  border: "1px solid blue",
                 },
               }}
             >
@@ -76,7 +71,7 @@ const Specialist = async () => {
                   fontWeight={600}
                   fontSize={18}
                   mt={2}
-                  color="white"
+                  color="primary.main"
                 >
                   {speciality.title}
                 </Typography>

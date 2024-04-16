@@ -99,7 +99,13 @@ const HeroSection = () => {
         >
           <Box>
             <Image
-              className="rounded-t-full rounded-b-full mt-8"
+              style={{
+                borderTopLeftRadius: "9999px",
+                borderTopRightRadius: "9999px",
+                borderBottomLeftRadius: "9999px",
+                borderBottomRightRadius: "9999px",
+                marginTop: "16px",
+              }}
               width={240}
               height={400}
               src={doctor}
@@ -108,7 +114,13 @@ const HeroSection = () => {
           </Box>
           <Box>
             <Image
-              className="rounded-t-full rounded-b-full"
+              style={{
+                borderTopLeftRadius: "9999px",
+                borderTopRightRadius: "9999px",
+                borderBottomLeftRadius: "9999px",
+                borderBottomRightRadius: "9999px",
+                
+              }}
               width={240}
               height={300}
               src={doctor1}
@@ -125,7 +137,7 @@ const HeroSection = () => {
           <Image
             height={200}
             width={200}
-            className="rounded-br-[50%] rounded-bl-[50%] rounded-tr-[50%]"
+            style={{ borderRadius: "0% 50% 50% 50%" }}
             src={doctor2}
             alt="dctr2"
           />
@@ -138,13 +150,7 @@ const HeroSection = () => {
             zIndex: "-1",
           }}
         >
-          <Image
-            height={200}
-            width={200}
-
-            src={stethoscope}
-            alt="dctr2"
-          />
+          <Image height={200} width={200} src={stethoscope} alt="dctr2" />
         </Box>
       </Box>
     </Container>

@@ -181,7 +181,7 @@ const RegisterPage = () => {
               </Button>
               <Typography component="p" fontWeight={300} color="GrayText">
                 Do You Already Have an Account?{" "}
-                <Link className="text-blue-600 font-semibold" href="/login">
+                <Link style={{color:"blue",fontWeight:"bold"}} href="/login">
                   Login
                 </Link>
               </Typography>
