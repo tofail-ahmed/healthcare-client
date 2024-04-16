@@ -22,7 +22,7 @@ const Sidebar = () => {
           alignItems:"center",
           marginTop:"5px"  
         }}>
-            <GiHospitalCross />
+           <Box color="primary.main"> <GiHospitalCross /></Box>
           Health
           <Box component="span" color="primary.main">
             Care
