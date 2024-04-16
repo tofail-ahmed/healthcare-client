@@ -40,8 +40,8 @@ const Specialist = async () => {
               sx={{
                 flex: 1,
                 width: "150px",
-                backgroundColor: "white",
-                border: "2px solid rgba(250,250,250,2)",
+                backgroundColor: "#f8fafc",
+                border: "1px solid rgba(250,250,250,2)",
                 borderRadius: "10px",
                 textAlign: "center",
                 padding: "40px 10px",
