@@ -15,7 +15,15 @@ import { GiHospitalCross } from "react-icons/gi";
 import { DrawerItem, UserRole } from "@/types/common";
 import {drawerItems} from "@/utils/drawerItems"
 import SidebarItem from "./SidebarItem";
+import { getUSerInfo } from "@/services/actions/auth.services";
+import {useState,useEffect} from "react"
 const Sidebar = () => {
+  const [userRole, setUsereRole] = useState("");
+  useEffect(() => {
+    const { role } = getUSerInfo() as any;
+    setUsereRole(role);
+  }, []);
+  // console.log(role)
   return (
     <Box>
       <div>
@@ -41,8 +49,8 @@ const Sidebar = () => {
           </Box>
         </Typography>
         <List>
-          {drawerItems("admin" as UserRole).map((item, index) => (
-        <SidebarItem key={index} index={index} item={item} />
+          {drawerItems(userRole as UserRole).map((item, index) => (
+            <SidebarItem key={index} index={index} item={item} />
           ))}
         </List>
       </div>
