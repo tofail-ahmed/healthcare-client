@@ -10,12 +10,21 @@ import Typography from '@mui/material/Typography';
 import MailIcon from '@mui/icons-material/Mail';
 import Sidebar from '../Sidebar/Sidebar';
 import MenuIcon from '@mui/icons-material/Menu';
+import { getUSerInfo } from "@/services/actions/auth.services";
+import {useState,useEffect} from "react"
+
 
 const drawerWidth = 240;
 
 
 
 export default function DashboardDrawer({children}:{children:React.ReactNode}) {
+  const [userEmail, setUserEmail] = useState("");
+  useEffect(() => {
+    const {email} = getUSerInfo() as any;
+    setUserEmail(email);
+  }, []);
+  
 
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -63,7 +72,7 @@ export default function DashboardDrawer({children}:{children:React.ReactNode}) {
           </IconButton>
          <Box>
          <Typography variant="h6" noWrap component="div" color="gray">
-           Hi, Mr. Tofail...
+           Hi, Mr. {userEmail}
           </Typography>
           <Typography variant="h6" noWrap component="div" color="primary.main">
             Welcome to HealthCare!
