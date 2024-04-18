@@ -52,11 +52,11 @@ const HowItWorks = () => {
               display:"flex",
               gap:"20px",
              margin:"10px 10px",
-              width:"100%"
+              width:"90%"
             }}>
               <Box
                 sx={{
-                  width: "100%",
+                  width: "90%",
                   border: "2px solid  #3b82f6 ",
                   padding: "10px",
                   borderRadius: "10px",
@@ -79,7 +79,7 @@ const HowItWorks = () => {
               </Box>
               <Box
                 sx={{
-                  width: "100%",
+                  width: "90%",
                   border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
@@ -104,11 +104,11 @@ const HowItWorks = () => {
               display:"flex",
               gap:"20px",
               margin:"10px 10px",
-              width:"100%"
+              width:"90%"
             }}>
               <Box
                 sx={{
-                  width: "100%",
+                  width: "90%",
                   border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
@@ -130,7 +130,7 @@ const HowItWorks = () => {
               </Box>
               <Box
                 sx={{
-                  width: "100%",
+                  width: "90%",
                   border: "2px solid #3b82f6",
                   padding: "10px",
                   borderRadius: "10px",
