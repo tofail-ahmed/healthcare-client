@@ -6,14 +6,62 @@ import SpecialistModal from "./components/SpecialistModal";
 import { useState } from "react";
 import { useGetAllSpecialitiesQuery } from "@/redux/api/specialtiesApi";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import Image from "next/image";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const SpecialtiesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetAllSpecialitiesQuery({});
-  // console.log(data);
+  const handleDelete = (id: string) => {
+    console.log(id);
+  };
   const columns: GridColDef[] = [
-    { field: "title", headerName: "title", width: 100 },
-    { field: "icon", headerName: "Symbol", width: 100 },
+    { field: "title", headerName: "title", width: 300 },
+    {
+      field: "icon",
+      headerName: "Symbol",
+      width: 300,
+      renderCell: ({ row }) => {
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              src={row.icon ? row.icon : "/placeholder.png"}
+              width={30}
+              height={30}
+              alt="icon"
+            />
+          </Box>
+        );
+      },
+    },
+    {
+      field: "action",
+      headerName: "Action",
+      width: 400,
+      renderCell: ({ row }) => {
+        return (
+          <Box
+            sx={{
+             
+            }}
+          >
+            <IconButton
+              onClick={() => handleDelete(row.id)}
+              aria-label="delete"
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Box>
+        );
+      },
+    },
   ];
 
   return (
