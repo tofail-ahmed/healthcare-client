@@ -19,11 +19,18 @@ const SpecialistModal = ({ open, setOpen }: TProps) => {
             <InputField name="title" label="Title"></InputField>
           </Grid>
           <Grid item md={6}>
-            <FileUploader />
+            <FileUploader name="file" label="Upload File" />
           </Grid>
         </Grid>
 
-        <Button type="submit">Create</Button>
+        <Button
+          sx={{
+            mt: 1,
+          }}
+          type="submit"
+        >
+          Create
+        </Button>
       </Form>
     </HealthCareModal>
   );
