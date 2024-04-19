@@ -25,29 +25,33 @@ type TProps={
   children:React.ReactNode;
   sx?:SxProps;
 }
-export default function HealthCareModal({title,open,setOpen,children}:TProps) {
-
-  
+export default function HealthCareModal({
+  title = "",
+  open = false,
+  setOpen,
+  children,
+  sx,
+}: TProps) {
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
     <React.Fragment>
-    
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        sx={{ ...sx }}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-       {title}
+          {title}
         </DialogTitle>
         <IconButton
           aria-label="close"
           onClick={handleClose}
           sx={{
-            position: 'absolute',
+            position: "absolute",
             right: 8,
             top: 8,
             color: (theme) => theme.palette.grey[500],
@@ -55,14 +59,7 @@ export default function HealthCareModal({title,open,setOpen,children}:TProps) {
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent dividers>
-         {children}
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Save changes
-          </Button>
-        </DialogActions>
+        <DialogContent dividers>{children}</DialogContent>
       </BootstrapDialog>
     </React.Fragment>
   );
