@@ -6,18 +6,27 @@ import { TextField, Grid, Button, Box } from "@mui/material";
 import React from "react";
 import { FieldValues } from "react-hook-form";
 import { modifyPayload } from "@/utils/modifyPayload";
+import { useCreateSpecialityMutation } from "@/redux/api/specialtiesApi";
+import { toast } from 'sonner';
 type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const SpecialistModal = ({ open, setOpen }: TProps) => {
-  const handleModalForm = (values: FieldValues) => {
+  const [createSpeccility] = useCreateSpecialityMutation();
+  const handleModalForm = async (values: FieldValues) => {
     // console.log(values)
-    const data=modifyPayload(values)
-    try{
 
-    }catch(err:any){
-      console.error(err.message)
+    const data = modifyPayload(values);
+    try {
+      const res = await createSpeccility(data).unwrap();
+      // console.log(res);
+      if(res?.id){
+        toast.success("Speciality Created Successfully!");
+        setOpen(false);
+      }
+    } catch (err: any) {
+      console.error(err.message);
     }
   };
   return (

@@ -8,9 +8,9 @@ const Specialist = async () => {
     },
   });
   const { data: specialties } = await res.json();
+  // console.log(specialties);
   const pureSpecialties=specialties.splice(0,3);
-//   console.log(pureSpecialties);
-//   console.log(specialties);
+  // console.log(pureSpecialties);
 
 
   return (
