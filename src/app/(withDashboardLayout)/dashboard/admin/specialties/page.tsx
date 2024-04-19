@@ -5,11 +5,16 @@ import { Box, Stack,Button,TextField } from '@mui/material';
 import SpecialistModal from "./components/SpecialistModal";
 import { useState } from "react";
 import { useGetAllSpecialitiesQuery } from "@/redux/api/specialtiesApi";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 
 const SpecialtiesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetAllSpecialitiesQuery({});
-  console.log(data);
+  // console.log(data);
+  const columns: GridColDef[] = [
+    { field: "title", headerName: "title", width: 100 },
+    { field: "icon", headerName: "Symbol", width: 100 },
+  ];
 
   return (
     <Box>
@@ -26,7 +31,13 @@ const SpecialtiesPage = () => {
           Search Specialities
         </TextField>
       </Stack>
-      <Box>All Specialists in Details</Box>
+      <Box sx={{ mt: 2 }}>
+        {!isLoading ? (
+          <DataGrid rows={data} columns={columns} />
+        ) : (
+          <h1>Loading.............</h1>
+        )}
+      </Box>
     </Box>
   );
 };
