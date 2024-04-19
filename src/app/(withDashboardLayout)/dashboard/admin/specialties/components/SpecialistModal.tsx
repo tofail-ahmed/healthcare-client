@@ -5,12 +5,21 @@ import HealthCareModal from "@/components/Shared/HealthCareModal/HealthCareModal
 import { TextField, Grid, Button, Box } from "@mui/material";
 import React from "react";
 import { FieldValues } from "react-hook-form";
+import { modifyPayload } from "@/utils/modifyPayload";
 type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const SpecialistModal = ({ open, setOpen }: TProps) => {
-  const handleModalForm = (values: FieldValues) => {};
+  const handleModalForm = (values: FieldValues) => {
+    // console.log(values)
+    const data=modifyPayload(values)
+    try{
+
+    }catch(err:any){
+      console.error(err.message)
+    }
+  };
   return (
     <HealthCareModal open={open} setOpen={setOpen} title="Create Specialist">
       <Form onSubmit={handleModalForm}>
