@@ -4,24 +4,39 @@ import HealthCareModal from '@/components/Shared/HealthCareModal/HealthCareModal
 import { Box, Stack,Button,TextField } from '@mui/material';
 import SpecialistModal from "./components/SpecialistModal";
 import { useState } from "react";
-import { useGetAllSpecialitiesQuery } from "@/redux/api/specialtiesApi";
+import {
+  useGetAllSpecialitiesQuery,
+  useDeleteSpecialityMutation,
+} from "@/redux/api/specialtiesApi";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import Image from "next/image";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from "sonner";
 
 const SpecialtiesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetAllSpecialitiesQuery({});
-  const handleDelete = (id: string) => {
-    console.log(id);
+  const [deleteSpeciality] = useDeleteSpecialityMutation();
+  const handleDelete =  async(id: string) => {
+    // console.log(id)
+  
+    try {
+      const res = await deleteSpeciality(id).unwrap();
+      // console.log(res)
+      if (res?.id) {
+        toast.success("Speciality deleted Successfully!");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
   };
   const columns: GridColDef[] = [
-    { field: "title", headerName: "title", width: 300 },
+    { field: "title", headerName: "title", width: 400 },
     {
       field: "icon",
       headerName: "Symbol",
-      width: 300,
+      flex:1,
       renderCell: ({ row }) => {
         return (
           <Box
@@ -44,14 +59,12 @@ const SpecialtiesPage = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 400,
+      flex:1,
+      headerAlign:"center",
+      align:"center",
       renderCell: ({ row }) => {
         return (
-          <Box
-            sx={{
-             
-            }}
-          >
+          <Box sx={{}}>
             <IconButton
               onClick={() => handleDelete(row.id)}
               aria-label="delete"

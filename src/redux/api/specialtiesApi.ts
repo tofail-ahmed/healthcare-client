@@ -10,17 +10,23 @@ const specialtiesApi = baseApi.injectEndpoints({
         contentType: "multipart/Form-data",
         data,
       }),
-      invalidatesTags:[tagTypes.specialities]
+      invalidatesTags: [tagTypes.specialities],
     }),
     getAllSpecialities: build.query({
       query: () => ({
         url: "/specialties",
         method: "GET",
       }),
-      providesTags:[tagTypes.specialities]
+      providesTags: [tagTypes.specialities],
+    }),
+    deleteSpeciality: build.mutation({
+      query: (id) => ({
+        url: `/specialties/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: [tagTypes.specialities],
     }),
   }),
-  
 });
 
-export const { useCreateSpecialityMutation,useGetAllSpecialitiesQuery } = specialtiesApi;
+export const { useCreateSpecialityMutation,useGetAllSpecialitiesQuery,useDeleteSpecialityMutation } = specialtiesApi;
