@@ -6,7 +6,7 @@ import { DataGrid,GridColDef } from "@mui/x-data-grid";
 import { useGetAllDoctorsQuery } from "@/redux/api/doctorApi";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-
+import Loader from '@/components/Shared/Loader/Loader';
 
 
 const DoctorsPage = () => {
@@ -28,8 +28,8 @@ const DoctorsPage = () => {
   const columns: GridColDef[] = [
     { field: "name", headerName: "Name", flex:1 },
     { field: "email", headerName: "Email", flex:1 },
-    { field: "qualification", headerName: "Qualification", flex:1 },
-    { field: "qualification", headerName: "Fees", flex:1 },
+    { field: "qualification", headerName: "Qualifications", flex:1 },
+    { field: "apointmentFee", headerName: "Fees", flex:1 },
     
     {
       field: "action",
@@ -65,7 +65,7 @@ const DoctorsPage = () => {
         {!isLoading ? (
           <DataGrid rows={doctors} columns={columns} />
         ) : (
-          <h1>Loading.............</h1>
+          <Loader/>
         )}
       </Box>
     </Box>

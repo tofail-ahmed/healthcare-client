@@ -13,6 +13,8 @@ import Image from "next/image";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { toast } from "sonner";
+import Loader from '@/components/Shared/Loader/Loader';
+
 
 const SpecialtiesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -97,7 +99,7 @@ const SpecialtiesPage = () => {
         {!isLoading ? (
           <DataGrid rows={data} columns={columns} />
         ) : (
-          <h1>Loading.............</h1>
+          <Loader/>
         )}
       </Box>
     </Box>
