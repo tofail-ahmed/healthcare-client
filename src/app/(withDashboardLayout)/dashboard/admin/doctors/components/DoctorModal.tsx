@@ -2,30 +2,34 @@ import Form from "@/components/Forms/Form";
 import InputField from "@/components/Forms/InputField";
 import SelectField from "@/components/Forms/SelectField";
 import FullScreenModal from "@/components/Shared/HealthCareModal/FullScreenModal";
+import { useCreateDoctorMutation } from "@/redux/api/doctorApi";
 import { Gender } from "@/types/common";
-import { Grid ,Button} from "@mui/material";
+import { modifyPayload } from "@/utils/modifyPayload";
+import { Grid, Button } from "@mui/material";
 import React from "react";
 import { FieldValues } from "react-hook-form";
+import { toast } from "sonner";
 type TProps = {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const DoctorModal = ({ open, setOpen }: TProps) => {
+  const [createDoctor] = useCreateDoctorMutation();
   const handleFormSubmit = async (values: FieldValues) => {
-    // console.log(values);
-    // values.doctor.experience = Number(values.doctor.experience);
-    // values.doctor.apointmentFee = Number(values.doctor.apointmentFee);
-    // const data = modifyPayload(values);
-    // try {
-    //   const res = await createDoctor(data).unwrap();
-    //   console.log(res);
-    //   if (res?.id) {
-    //     toast.success("Doctor created successfully!!!");
-    //     setOpen(false);
-    //   }
-    // } catch (err: any) {
-    //   console.error(err);
-    // }
+    values.doctor.experience = Number(values.doctor.experience);
+    values.doctor.apointmentFee = Number(values.doctor.apointmentFee);
+    console.log(values);
+    const data = modifyPayload(values);
+    try {
+      const res = await createDoctor(data).unwrap();
+      console.log(res);
+      if (res?.id) {
+        toast.success("Doctor created successfully!!!");
+        setOpen(false);
+      }
+    } catch (err: any) {
+      console.error(err);
+    }
   };
   const defaultValues = {
     doctor: {
@@ -65,14 +69,14 @@ const DoctorModal = ({ open, setOpen }: TProps) => {
               fullWidth={true}
               sx={{ mb: 2 }}
             />
-             </Grid>
+          </Grid>
           <Grid item xs={12} sm={12} md={4}>
             <InputField
-             name="password"
-             type="password"
-             label="Password"
-             fullWidth={true}
-             sx={{ mb: 2 }}
+              name="password"
+              type="password"
+              label="Password"
+              fullWidth={true}
+              sx={{ mb: 2 }}
             />
           </Grid>
           <Grid item xs={12} sm={12} md={4}>
@@ -106,7 +110,7 @@ const DoctorModal = ({ open, setOpen }: TProps) => {
             <SelectField
               name="doctor.gender"
               label="Gender"
-             items={Gender}
+              items={Gender}
               fullWidth={true}
               sx={{ mb: 2 }}
             />

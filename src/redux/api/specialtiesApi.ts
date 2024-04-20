@@ -7,7 +7,7 @@ const specialtiesApi = baseApi.injectEndpoints({
       query: (data) => ({
         url: "/specialties",
         method: "POST",
-        contentType: "multipart/Form-data",
+        contentType: "multipart/form-data",
         data,
       }),
       invalidatesTags: [tagTypes.specialities],
