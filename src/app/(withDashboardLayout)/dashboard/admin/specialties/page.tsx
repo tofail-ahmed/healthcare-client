@@ -17,6 +17,7 @@ import { toast } from "sonner";
 const SpecialtiesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const { data, isLoading } = useGetAllSpecialitiesQuery({});
+  console.log(data)
   const [deleteSpeciality] = useDeleteSpecialityMutation();
   const handleDelete =  async(id: string) => {
     // console.log(id)
