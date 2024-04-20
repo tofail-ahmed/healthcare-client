@@ -13,7 +13,7 @@ const DoctorsPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const query: Record<string, any> = {};
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(searchTerm);
+  // console.log(searchTerm);
   query["searchTerm"] = searchTerm;
   const { data, isLoading } = useGetAllDoctorsQuery({ ...query });
   const handleDelete = async (id: string) => {
